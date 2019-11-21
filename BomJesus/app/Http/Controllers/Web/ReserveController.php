@@ -35,7 +35,7 @@ class ReserveController extends Controller
      */
     public function create()
     {
-        return view('dashboard.agenda.create');
+        return view('dashboard.agenda.create-edit');
     }
 
     /**
@@ -78,7 +78,7 @@ class ReserveController extends Controller
     {
         $reserve = $this->reserve->find($reserve->id);
 
-        return view('dashboard.agenda.create',compact('reserve'));
+        return view('dashboard.agenda.create-edit',compact('reserve'));
     }
 
     /**

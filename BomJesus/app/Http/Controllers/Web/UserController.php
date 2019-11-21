@@ -30,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.user.create-edit');
     }
 
     /**
@@ -41,7 +41,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $data['user_id'] = 1;
+        $data['car_id'] = 1;
+        $create = $this->reserve->create($data);
+        if($create)
+            return redirect()->route('reserve.index')->with(['success'=>"Cadastrado realizado com sucesso!"]);
+        else
+            return redirect()->route('reserve.index')->with(['success'=>"Cadastrado realizado com sucesso!"]);
     }
 
     /**
@@ -61,9 +69,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id){
+
+        $user = $this->user->find($id);
+        return view('dashboard.user.create-edit',$user);
     }
 
     /**
