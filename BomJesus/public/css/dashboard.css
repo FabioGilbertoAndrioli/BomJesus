@@ -1,0 +1,261 @@
+
+/* RESETS */
+@import url('https://fonts.googleapis.com/css?family=Calistoga&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Concert+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Hammersmith+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Concert+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Tomorrow&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- clear ---- */
+.clear{
+    clear: both;
+}
+
+
+html,body{
+    height: 100%;
+}
+
+
+/* --- barra de menu inicial */
+
+.header{
+    padding: 2px 5px;
+    width: 100%;
+    background: rgba(0, 138, 202, 0.774);
+    vertical-align: middle;
+}
+
+.header .logo{
+    width: 320px;
+    display: inline-block;
+    margin-right: 20px;
+    vertical-align: middle;
+    padding: 10px;
+    font-family: 'Anton', sans-serif;
+    color:#fff;
+}
+
+.header .logo h3{
+    display: inline-block;
+}
+
+.header .logo p{
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.header .navbar{
+    float: right;
+    width: 250px;
+    padding: 10px;
+}
+
+.navbar ul{
+    float: right!important;
+}
+
+.navbar li{
+    display: inline-block;
+    padding: 3px 12px;
+    list-style: none;
+}
+
+.navbar li a{
+    font-size: 13pt;
+    text-decoration: none;
+    color:#ffffff;
+    font-family: 'Abril Fatface', cursive;
+}
+
+.navbar li a:hover{
+    color:rgb(252, 111, 93);
+}
+
+/* -- barra de menu lateral -- */
+main{
+    height: 100%;
+}
+
+.side{
+    float: left;
+    height: 100%;
+    width: 250px;
+    background: #b8b7b7f8;
+    padding: 10px;
+}
+
+.side .sidebar{
+    width: 100%;
+    padding: 20px;
+}
+
+.side .sidebar li{
+    list-style: none;
+    padding: 4px;
+}
+
+.side .sidebar li a{
+    font-size: 16pt;
+    text-decoration: none;
+    color: rgba(71, 22, 22, 0.774);
+    font-family: 'Concert One', cursive;
+}
+
+.side .sidebar li a:hover{
+    color: rgba(32, 14, 14, 0.774);
+}
+
+/* -- conteudo do dashboard --*/
+
+.content{
+    float: right;
+    width: calc(100% - 250px);
+    background: #ffffff;
+    height: 100%;
+    padding: 5px;
+}
+
+/* -- Agenda -- */
+
+/* -- tela principal --*/
+.content .header-reserve{
+    margin: 10px;
+    padding: 10px;
+    width: 98%;
+    border-radius: 1em 1em 1em 1em;
+    display: inline-block;
+    background: rgba(0, 60, 88, 0.233);
+}
+
+.content .header-reserve .register{
+    display: inline-block;
+}
+
+.content .header-reserve .search{
+    float:right;
+}
+
+.content .header-reserve .search[input]{
+    border-radius: 2em 2em 2em 2em;
+}
+
+.content .header-reserve .search input{
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+    padding-left: 8px;
+    padding-right: 25px;
+    color:rgba(48, 45, 45, 0.918);
+    font-family: 'Hammersmith One', sans-serif;
+    outline: none;
+    border:none;
+    font-size: 17pt;
+}
+
+.content .header-reserve .search button{
+    border-radius: 0.5em 0.5em 0.5em 0.5em;
+    padding: 4px 10px 5px 10px;
+    color:#ffffff;
+    font-family: 'Concert One', cursive;
+    outline: none;
+    border:none;
+    margin-left: -25px;
+    background: rgb(0, 60, 88);
+}
+
+.content .header-reserve .search button:hover{
+    color:#d1cfcf;
+}
+
+.content .my-panel{
+    width: 100%;
+    border-radius: 2em 2em 2em 2em;
+    border:solid 1px black;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 12pt;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+.list-classes{
+    font-size: 10pt;
+    list-style: none;
+}
+
+/* --  cadastro --*/
+.panel-form{
+    padding: 50px;
+}
+
+
+/* --- my-modal --- */
+.my-container-modal{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 50px;
+}
+
+.my-container-modal .my-modal{
+    height: 70%;
+    width: 50%;
+    position: relative;
+    left: 25%;
+    padding: 3px 50px;
+    background: rgba(0, 138, 202, 0.247);
+    border-radius: 0.7em 0.7em 0.7em 0.7em;
+}
+
+.my-container-modal .my-modal .my-modal-title{
+    width:100%;
+    text-align: center;
+    font-size:18pt;
+    font-family: 'Odibee Sans', cursive;
+}
+
+.my-container-modal .my-modal .my-modal-content{
+    width:100%;
+    text-align: center;
+    font-size:15pt;
+    font-family: 'Tomorrow', sans-serif;
+}
+
+.my-container-modal .my-modal .my-modal-button{
+    padding: 10px;
+    position: absolute;
+    bottom: 0px;
+    right:10px;
+}
+
+.span-date{
+    color:rgb(141, 71, 71);
+}
+
+/* --- User --*/
+
+.my-panel-user{
+    padding: 10px;
+    font-family: 'Tomorrow', sans-serif;
+}
+
+.list-user-name{
+    font-size: 15pt;
+}
+
+.img-profile{
+    border-radius: 10em 10em 10em 10em;
+}
+
+
+
+
