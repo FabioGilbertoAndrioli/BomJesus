@@ -40,7 +40,7 @@
                         <td>{{Carbon\Carbon::parse($user->created_at)->format('d/m/Y')}}</td>
                         <td>
                             <a class="btn btn-success" href="{{route('user.edit',$user)}}"><i class="fa fa-edit"></i></a>
-                            <a class="btn btn-danger"  href=""><i class="fa fa-trash"></i></a>
+                            <a class="btn btn-danger"  href="{{route('user.confirm.delete',$user)}}"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                 @empty

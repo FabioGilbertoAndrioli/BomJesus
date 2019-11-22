@@ -33,13 +33,11 @@
             <label for="inputPerfil">Perfil</label>
             <select name="profile" class="form-control" id="inputPerfil">
                 @if(isset($user))
-                    <option value="{{$user->profile}}" selected="selected">{{$user->profile}}</option>
-                @else
-                    <option  selected="selected">Perfil...</option>
+                    <option value=""  selected="selected">Perfil...</option>
                 @endif
                 <optgroup label="PERFIL">
-                    <option value="Administrativo">Administrativo</option>
-                    <option value="Pedagogico">Pedagógico</option>
+                    <option @if(isset($user) && $user->profile == "Administrador") selected="selected" @endif  value="Administrador">Administrador</option>
+                    <option @if(isset($user) && $user->profile == "Pedagogico") selected="selected" @endif value="Pedagogico">Pedagógico</option>
                 </optgroup>
             </select>
         </div>
@@ -48,13 +46,11 @@
                 <label for="inputsexo">Sexo</label>
                 <select name="sexo" class="form-control" id="inputSexo">
                         @if(isset($user))
-                            <option selected="selected">{{$user->sexo}}</option>
-                        @else
-                            <option  selected="selected">Sexo...</option>
+                            <option value=""  selected="selected">Sexo...</option>
                         @endif
                         <optgroup label="Sexo">
-                            <option value="Manha">Masculino</option>
-                            <option value="Tarde">Feminino</option>
+                            <option  @if(isset($user) && $user->sexo == "Masculino") selected="selected" @endif value="Masculino">Masculino</option>
+                            <option  @if(isset($user) && $user->sexo == "Feminino")  selected="selected" @endif value="Feminino">Feminino</option>
                         </optgroup>
                 </select>
             </div>

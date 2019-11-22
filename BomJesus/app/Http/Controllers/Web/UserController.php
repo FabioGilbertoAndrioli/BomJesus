@@ -43,7 +43,7 @@ class UserController extends Controller
     {
         $data = $request->all();
 
-        $data['password'] = '12345678';
+        $data['password'] = bcrypt('12345678');
         $create = $this->user->create($data);
         if($create)
             return redirect()->route('user.index')->with(['success'=>"Cadastrado de usuário realizado com sucesso!"]);
@@ -68,10 +68,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id){
+    public function edit(User $user){
 
-        $user = $this->user->find($id);
-        return view('dashboard.user.create-edit',$user);
+
+        $user = $this->user->find($user->id);
+        return view('dashboard.user.create-edit',compact('user'));
     }
 
     /**
@@ -81,15 +82,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        if($user->update($request->all()))
+            return redirect()->route('user.index')->with(['success'=>"Usuário editado com sucesso"]);
+        else
+            return redirect()->route("user.edit",['id' => $user->id])
+                            ->withErrors(['errors'=>'Falha ao editar'])
+                            ->withInput();
     }
 
     public function confirmDelete(User $user){
         $user = $this->user->find($user->id);
 
-        return view('dashboard.agenda.confirmDelete',compact('user'));
+        return view('dashboard.user.confirmDelete',compact('user'));
     }
 
     public function delete(User $user){
