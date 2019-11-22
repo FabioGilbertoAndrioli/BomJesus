@@ -35,7 +35,7 @@
                     <tr>
                         <th scope="row">{{$user->id}}</th>
                         <td><img class="img-profile" width="30px" height="40px" src="{{ asset('/resource/img/profile/fabio.jpg') }}"></td>
-                        <td class="list-user-name"><i style="color:rgb(0, 60, 88)" class="fa fa-user"></i> Fábio Gilberto A. Gonçcalves</td>
+                        <td class="list-user-name"><i style="color:rgb(0, 60, 88)" class="fa fa-user"></i> {{$user->name}}</td>
                         <td> {{$user->profile}} </td>
                         <td>{{Carbon\Carbon::parse($user->created_at)->format('d/m/Y')}}</td>
                         <td>

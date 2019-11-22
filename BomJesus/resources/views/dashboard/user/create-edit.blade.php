@@ -31,7 +31,7 @@
             </div>
         <div class="form-group">
             <label for="inputPerfil">Perfil</label>
-            <select name="class" class="form-control" id="inputPerfil">
+            <select name="profile" class="form-control" id="inputPerfil">
                 @if(isset($user))
                     <option selected="selected">{{$user->profile}}</option>
                 @else

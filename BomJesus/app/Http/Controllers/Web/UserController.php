@@ -43,13 +43,12 @@ class UserController extends Controller
     {
         $data = $request->all();
 
-        $data['user_id'] = 1;
-        $data['car_id'] = 1;
-        $create = $this->reserve->create($data);
+        $data['password'] = '12345678';
+        $create = $this->user->create($data);
         if($create)
-            return redirect()->route('reserve.index')->with(['success'=>"Cadastrado realizado com sucesso!"]);
+            return redirect()->route('user.index')->with(['success'=>"Cadastrado de usuário realizado com sucesso!"]);
         else
-            return redirect()->route('reserve.index')->with(['success'=>"Cadastrado realizado com sucesso!"]);
+            return redirect()->route("user.create")->withErrors(['errors'=>'Falha ao cadastrar']);
     }
 
     /**

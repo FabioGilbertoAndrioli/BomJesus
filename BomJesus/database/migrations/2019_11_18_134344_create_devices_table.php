@@ -17,9 +17,10 @@ class CreateDevicesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name',150);
             $table->string('brand',150); // marca
-            $table->string('model',150)->nullable();;
-            $table->string('serialNumber')->nullable();;
-            $table->string('patrimony')->nullable();;
+            $table->string('model',150)->nullable();
+            $table->string('serialNumber')->nullable();
+            $table->string('patrimony')->nullable();
+            $table->string('ip')->nullable();
 
             $table->bigInteger('room_id')->unsigned();
 
