@@ -38,22 +38,21 @@
             </select>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="inputNivel">Perído</label>
-                <select name="period" class="form-control" id="inputPeriodo">
+            <div class="form-group col-md-12">
+                <label for="inputNivel">Sexo</label>
+                <select name="period" class="form-control" id="inputSexo">
                         @if(isset($reserve))
-                            <option selected="selected">{{$reserve->period}}</option>
+                            <option selected="selected">{{$user->sexo}}</option>
                         @else
                             <option  selected="selected">Período...</option>
                         @endif
                         <optgroup label="Período">
-                            <option value="Manha">Manhã</option>
-                            <option value="Tarde">Tarde</option>
-                            <option value="Noite">Noite</option>
+                            <option value="Manha">Masculino</option>
+                            <option value="Tarde">Feminino</option>
                         </optgroup>
                 </select>
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-12">
             <label for="inputCarrinho">Carrinho</label>
             <select name="car_id" id="inputCarrinho" class="form-control">
                 @if(isset($reserve))
