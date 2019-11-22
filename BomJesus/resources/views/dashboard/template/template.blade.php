@@ -38,6 +38,7 @@
                         <li><a href="{{route('reserve.index')}}"><i class="fa fa-calendar"></i> RESERVA</a></li>
                         <li><a href=""><i class="fa fa-envelope"></i> SOLICITAÇÕES</a></li>
                         <li><a href=""><i class="fa fa-university"></i> SALAS</a></li>
+                        <li><a href=""><i class="fa fa-archive"></i> CARRINHOS</a></li>
                         <li><a href=""><i class="fa fa-cubes"></i> DISPOSITIVOS</a></li>
                         <li><a href=""><i class="fa fa-laptop"></i> CHROMEBOOKS</a></li>
                         <li><a href=""><i class="fa fa-print"></i> TONERS</a></li>
