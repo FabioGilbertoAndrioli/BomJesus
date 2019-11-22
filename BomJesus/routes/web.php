@@ -32,6 +32,8 @@ Route::resource('room', 'Web\RoomController');
 
 /* --- Usuário --*/
 Route::resource('user', 'Web\UserController');
+Route::get('user/confirmDelete/{user}', 'Web\UserController@confirmDelete')->name('user.confirm.delete');
+Route::get('user/delete/{user}', 'Web\userController@delete')->name('user.delete');
 
 
 Auth::routes();

@@ -86,6 +86,23 @@ class UserController extends Controller
         //
     }
 
+    public function confirmDelete(User $user){
+        $user = $this->user->find($user->id);
+
+        return view('dashboard.agenda.confirmDelete',compact('user'));
+    }
+
+    public function delete(User $user){
+        $user = $this->user->find($user->id);
+
+        if($user->delete())
+            return redirect()->route('user.index')->with(['success'=>"Usuário deletado com sucesso"]);
+        else
+            return redirect()->route("user.edit",['id' => $user->id])
+            ->withErrors(['errors'=>'Falha ao deletar'])
+            ->withInput();
+    }
+
     /**
      * Remove the specified resource from storage.
      *

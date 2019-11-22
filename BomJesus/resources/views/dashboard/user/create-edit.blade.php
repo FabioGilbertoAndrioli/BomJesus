@@ -33,7 +33,7 @@
             <label for="inputPerfil">Perfil</label>
             <select name="profile" class="form-control" id="inputPerfil">
                 @if(isset($user))
-                    <option selected="selected">{{$user->profile}}</option>
+                    <option value="{{$user->profile}}" selected="selected">{{$user->profile}}</option>
                 @else
                     <option  selected="selected">Perfil...</option>
                 @endif
@@ -47,7 +47,7 @@
             <div class="form-group col-md-12">
                 <label for="inputsexo">Sexo</label>
                 <select name="sexo" class="form-control" id="inputSexo">
-                        @if(isset($sexo))
+                        @if(isset($user))
                             <option selected="selected">{{$user->sexo}}</option>
                         @else
                             <option  selected="selected">Sexo...</option>
