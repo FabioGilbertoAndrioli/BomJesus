@@ -23,6 +23,12 @@
                 <input type="text" value="{{$user->name ?? ''}}" name="name" class="form-control" id="inputNome" placeholder="Nome completo">
             </div>
         </div>
+        <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" value="{{$user->email ?? ''}}" name="email" class="form-control" id="inputEmail" placeholder="Endereço de email">
+                </div>
+            </div>
         <div class="form-group">
             <label for="inputPerfil">Perfil</label>
             <select name="class" class="form-control" id="inputPerfil">
@@ -39,48 +45,31 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-12">
-                <label for="inputNivel">Sexo</label>
-                <select name="period" class="form-control" id="inputSexo">
-                        @if(isset($reserve))
+                <label for="inputsexo">Sexo</label>
+                <select name="sexo" class="form-control" id="inputSexo">
+                        @if(isset($sexo))
                             <option selected="selected">{{$user->sexo}}</option>
                         @else
-                            <option  selected="selected">Período...</option>
+                            <option  selected="selected">Sexo...</option>
                         @endif
-                        <optgroup label="Período">
+                        <optgroup label="Sexo">
                             <option value="Manha">Masculino</option>
                             <option value="Tarde">Feminino</option>
                         </optgroup>
                 </select>
             </div>
-            <div class="form-group col-md-12">
-            <label for="inputCarrinho">Carrinho</label>
-            <select name="car_id" id="inputCarrinho" class="form-control">
-                @if(isset($reserve))
-                    <option selected="selected">{{$reserve->class}}</option>
-                @else
-                    <option  selected="selected">Carrinho...</option>
-                @endif
-                <optgroup label="Carrinho">
-                    <option value="Manha">Carrinho 1</option>
-                    <option value="Tarde">Carrinho 2</option>
-                </optgroup>
-            </select>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputDate">Data</label>
-                <input  @if(isset($reserve)) value="{{Carbon\Carbon::parse($reserve->date)->format('Y-m-d') }}" @endif name="date" type="date" class="form-control" id="inputDate">
-            </div>
-            @if(isset($reserve))
+
+            @if(isset($user))
                 <div class="form-group col-md-8">
                     <label for="inputDate">Data de registro</label>
-                    <input @if(isset($reserve)) value="{{Carbon\Carbon::parse($reserve->created_at)->format('Y-m-d') }}" @endif disabled type="date" class="form-control" id="inputDate">
+                    <input @if(isset($user)) value="{{Carbon\Carbon::parse($user->created_at)->format('Y-m-d') }}" @endif disabled type="date" class="form-control" id="inputDate">
                 </div>
             @endif
         </div>
         <a class="btn btn-info" href="{{ url()->previous() }}">VOLTAR</a>
         <button type="submit" class="btn btn-primary">Enviar</button>
-        @if(isset($reserve))
-            <a href="{{route('reserve.confirm.delete',$reserve)}}" class="btn btn-danger">Deletar</a>
+        @if(isset($user))
+            <a href="{{route('user.confirm.delete',$user)}}" class="btn btn-danger">Deletar</a>
         @endif
     </form>
 </div>
