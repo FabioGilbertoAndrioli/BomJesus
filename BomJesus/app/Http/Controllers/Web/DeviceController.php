@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
-use App\Device;
+use App\Models\Device;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class DeviceController extends Controller
 {
+
+    private $device;
+    private $paginate = 10;
+
+    public function __construct(Device $device){
+        $this->device = $device;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,8 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        //
+        $devices = $this->device->orderBy('id','desc')->paginate($this->paginate);
+        return view('dashboard.device.index',compact('devices'));
     }
 
     /**
@@ -24,7 +33,8 @@ class DeviceController extends Controller
      */
     public function create()
     {
-        //
+        $rooms = Room::all();
+        return view('dashboard.device.create-edit',compact('rooms'));
     }
 
     /**
@@ -35,7 +45,14 @@ class DeviceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $data['room_id'] = 2;
+        $create = $this->device->create($data);
+        if($create)
+            return redirect()->route('device.index')->with(['success'=>"Cadastrado realizado com sucesso!"]);
+        else
+            return redirect()->route('device.index')->with(['success'=>"Cadastrado realizado com sucesso!"]);
     }
 
     /**
@@ -57,7 +74,9 @@ class DeviceController extends Controller
      */
     public function edit(Device $device)
     {
-        //
+        $device = $this->device->find($device->id);
+        $rooms = Room::all();
+        return view('dashboard.device.create-edit',compact('device','rooms',));
     }
 
     /**
@@ -69,7 +88,30 @@ class DeviceController extends Controller
      */
     public function update(Request $request, Device $device)
     {
-        //
+        $data['room_id'] = 2;
+        if($device->update($request->all()))
+            return redirect()->route('device.index')->with(['success'=>"Dispositivo editado com sucesso"]);
+        else
+            return redirect()->route("device.edit",['id' => $device->id])
+                            ->withErrors(['errors'=>'Falha ao editar'])
+                            ->withInput();
+    }
+
+    public function confirmDelete(Device $device){
+        $device = $this->device->find($device->id);
+
+        return view('dashboard.device.confirmDelete',compact('device'));
+    }
+
+    public function delete(Device $device){
+        $device = $this->device->find($device->id);
+
+        if($device->delete())
+            return redirect()->route('device.index')->with(['success'=>"Dispositivo deletado com sucesso"]);
+        else
+            return redirect()->route("device.edit",['id' => $device->id])
+            ->withErrors(['errors'=>'Falha ao deletar'])
+            ->withInput();
     }
 
     /**
