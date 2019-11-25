@@ -34,14 +34,23 @@
                 <nav class="sidebar">
                     <ul>
                         <li><a href=""><i class="fa fa-home"></i> HOME</a></li>
+                        <hr>
                         <li><a href="{{route('user.index')}}"><i class="fa fa-users"></i> USUÁRIOS</a></li>
+                        <hr>
                         <li><a href="{{route('reserve.index')}}"><i class="fa fa-calendar"></i> RESERVA</a></li>
+                        <hr>
                         <li><a href=""><i class="fa fa-envelope"></i> SOLICITAÇÕES</a></li>
+                        <hr>
                         <li><a href=""><i class="fa fa-university"></i> SALAS</a></li>
+                        <hr>
                         <li><a href=""><i class="fa fa-archive"></i> CARRINHOS</a></li>
+                        <hr>
                         <li><a href=""><i class="fa fa-cubes"></i> DISPOSITIVOS</a></li>
+                        <hr>
                         <li><a href=""><i class="fa fa-laptop"></i> CHROMEBOOKS</a></li>
+                        <hr>
                         <li><a href=""><i class="fa fa-print"></i> TONERS</a></li>
+                        <hr>
                     </ul>
                 </nav> <!-- sidebar -->
             </div><!-- side -->

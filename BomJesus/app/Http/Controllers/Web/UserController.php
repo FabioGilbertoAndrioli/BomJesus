@@ -58,7 +58,7 @@ class UserController extends Controller
             $data['image'] = $nameFile;
             if(!$upload)
                 return redirect()
-                        ->route("{$this->route}.create")
+                        ->route("user.create")
                         ->withErrors(['errors'=>'Erro no upload'])
                         ->withInput();
          }
@@ -89,7 +89,6 @@ class UserController extends Controller
      */
     public function edit(User $user){
 
-
         $user = $this->user->find($user->id);
         return view('dashboard.user.create-edit',compact('user'));
     }
@@ -103,7 +102,22 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        if($user->update($request->all()))
+        $data = $request->all();
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+
+            //Definir o nome da imagem
+            $nameFile = uniqid(date('YmdHi')).'.'.$image->getClientOriginalExtension();
+
+            $upload = $image->storeAs('users',$user->image);
+            $data['image'] = $nameFile;
+            if(!$upload)
+                return redirect()->route("user.edit",['id' => $user->id])
+                ->withErrors(['errors'=>'Falha no upload'])
+                ->withInput();
+        }
+
+        if($user->update($data))
             return redirect()->route('user.index')->with(['success'=>"Usuário editado com sucesso"]);
         else
             return redirect()->route("user.edit",['id' => $user->id])

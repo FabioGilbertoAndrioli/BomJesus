@@ -93,11 +93,14 @@ main{
     width: 250px;
     background: #b8b7b7f8;
     padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .side .sidebar{
     width: 100%;
     padding: 20px;
+
 }
 
 .side .sidebar li{
