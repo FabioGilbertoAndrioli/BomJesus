@@ -19,8 +19,17 @@
         @csrf
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputNome">Nome</label>
-                <input type="text" value="{{$reserve->name ?? ''}}" name="name" class="form-control" id="inputNome" placeholder="Name">
+                <label for="inputNivel">Usuário</label>
+                <select name="user_id" class="form-control" id="inputNivel">
+                    <option @if(!isset($reserve)) selected="selected" @endif >Usuário...</option>
+                    <optgroup label="Usuários">
+                       @forelse ($users as $user)
+                            <option @if(isset($reserve) && $reserve->user == $user) selected="selected"  @endif value="{{$user->id}}">{{$user->name}}</option>
+                       @empty
+                        <option>Nenhum usuário encontrado...</option>
+                       @endforelse
+                    </optgroup>
+                </select>
             </div>
             <div class="form-group col-md-6">
                 <label for="inputNivel">Nível</label>
@@ -128,7 +137,7 @@
                 </div>
             @endif
         </div>
-        <a class="btn btn-info" href="{{ url()->previous() }}">VOLTAR</a>
+        <a class="btn btn-info" href="{{ route('reserve.index') }}">VOLTAR</a>
         <button type="submit" class="btn btn-primary">Enviar</button>
         @if(isset($reserve))
             <a href="{{route('reserve.confirm.delete',$reserve)}}" class="btn btn-danger">Deletar</a>

@@ -30,6 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
+
         return view('dashboard.user.create-edit');
     }
 
@@ -44,6 +45,24 @@ class UserController extends Controller
         $data = $request->all();
 
         $data['password'] = bcrypt('12345678');
+
+
+         //verifica se existe a imagem
+         if($request->hasFile('image')){
+            $image = $request->file('image');
+
+            //Definir o nome da imagem
+            $nameFile = uniqid(date('YmdHi')).'.'.$image->getClientOriginalExtension();
+
+            $upload = $image->storeAs('users',$nameFile);
+            $data['image'] = $nameFile;
+            if(!$upload)
+                return redirect()
+                        ->route("{$this->route}.create")
+                        ->withErrors(['errors'=>'Erro no upload'])
+                        ->withInput();
+         }
+
         $create = $this->user->create($data);
         if($create)
             return redirect()->route('user.index')->with(['success'=>"Cadastrado de usuário realizado com sucesso!"]);

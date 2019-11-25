@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Reserve;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use App\User;
 
 class ReserveController extends Controller
 {
@@ -22,10 +23,11 @@ class ReserveController extends Controller
      */
     public function index()
     {
-        // $reserve = $this->reserve->find(3);
+        //  $reserve = $this->reserve->find(4);
         // dd($reserve->classes[0]);
         $reserves = $this->reserve->orderBy('id','desc')->paginate($this->paginate);
         return view('dashboard.agenda.index',compact('reserves'));
+
     }
 
     /**
@@ -35,7 +37,9 @@ class ReserveController extends Controller
      */
     public function create()
     {
-        return view('dashboard.agenda.create-edit');
+        //{{$reserve->user->contains($user) ? 'checked' : '' }}
+        $users = User::all();
+        return view('dashboard.agenda.create-edit',compact('users'));
     }
 
     /**
@@ -46,9 +50,9 @@ class ReserveController extends Controller
      */
     public function store(Request $request)
     {
+
         $data = $request->all();
 
-        $data['user_id'] = 1;
         $data['car_id'] = 1;
         $create = $this->reserve->create($data);
         if($create)
@@ -77,8 +81,9 @@ class ReserveController extends Controller
     public function edit(Reserve $reserve)
     {
         $reserve = $this->reserve->find($reserve->id);
-
-        return view('dashboard.agenda.create-edit',compact('reserve'));
+        $users = User::all();
+        return view('dashboard.agenda.create-edit',compact('reserve','users'));
+        //{{$reserve->user->contains($user) ? 'checked' : '' }}
     }
 
     /**
@@ -90,7 +95,6 @@ class ReserveController extends Controller
      */
     public function update(Request $request, Reserve $reserve)
     {
-        $request['user_id'] = 1;
         $request['car_id'] = 1;
         if($reserve->update($request->all()))
             return redirect()->route('reserve.index')->with(['success'=>"Reserva editada com sucesso"]);

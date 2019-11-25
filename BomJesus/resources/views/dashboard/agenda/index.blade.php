@@ -34,7 +34,7 @@
             @forelse ($reserves as $reserve)
                 <tr>
                     <th scope="row">{{$reserve->id}}</th>
-                    <td>Fábio Gilberto A. Gonçcalves</td>
+                    <td>{{$reserve->user->name}}</td>
                     <td>
                         <ul>
                             <li class="list-classes">Terceira aula</li>

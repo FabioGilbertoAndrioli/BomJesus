@@ -11,12 +11,18 @@
 @endif
 <div class="panel-form">
     @if(isset($user))
-        <form action="{{route('user.update',$user)}}" method="POST">
+        <form action="{{route('user.update',$user)}}" method="POST" enctype="multipart/form-data">
         {{ method_field('PUT') }}
     @else
-        <form action="{{route('user.store')}}" method="POST">
+        <form action="{{route('user.store')}}" method="POST" enctype="multipart/form-data">
     @endif
         @csrf
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="inputImage">Foto</label>
+                <input type="file" name="image" class="form-control" id="inputImage">
+            </div>
+        </div>
         <div class="form-row">
             <div class="form-group col-md-12">
                 <label for="inputNome">Nome</label>
