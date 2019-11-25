@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
-use App\Room;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
+
+    private $room;
+    private $paginate = 4;
+
+    public function __construct(Room $room){
+        $this->room = $room;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,8 @@ class RoomController extends Controller
      */
     public function index()
     {
-        //
+        $rooms = $this->room->orderBy('id','desc')->paginate($this->paginate);
+        return view('dashboard.room.index',compact('rooms'));
     }
 
     /**
@@ -24,7 +32,8 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('dashboard.room.create-edit');
     }
 
     /**
@@ -35,7 +44,13 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $create = $this->room->create($data);
+        if($create)
+            return redirect()->route('room.index')->with(['success'=>"Cadastrado realizado com sucesso!"]);
+        else
+            return redirect()->route('room.index')->with(['success'=>"Cadastrado realizado com sucesso!"]);
     }
 
     /**
@@ -57,7 +72,25 @@ class RoomController extends Controller
      */
     public function edit(Room $room)
     {
-        //
+        $room = $this->room->find($room->id);
+        return view('dashboard.room.create-edit',compact('room'));
+    }
+
+    public function confirmDelete(Room $room){
+        $room = $this->room->find($room->id);
+
+        return view('dashboard.room.confirmDelete',compact('room'));
+    }
+
+    public function delete(Room $room){
+        $room = $this->room->find($room->id);
+
+        if($room->delete())
+            return redirect()->route('room.index')->with(['success'=>"Reserva deletada com sucesso"]);
+        else
+            return redirect()->route("room.edit",['id' => $room->id])
+            ->withErrors(['errors'=>'Falha ao deletar'])
+            ->withInput();
     }
 
     /**
@@ -69,7 +102,12 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        //
+        if($room->update($request->all()))
+            return redirect()->route('room.index')->with(['success'=>"Sala editada com sucesso"]);
+        else
+            return redirect()->route("room.edit",['id' => $room->id])
+                            ->withErrors(['errors'=>'Falha ao editar'])
+                            ->withInput();
     }
 
     /**

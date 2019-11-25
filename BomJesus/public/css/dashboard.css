@@ -323,3 +323,37 @@ main{
 }
 
 
+/** ROOM **/
+.my-panel-room{
+    width: 100%;
+    padding: 10px;
+    font-family: 'Tomorrow', sans-serif;
+    height: 80%;
+    min-height: 80%;
+    max-height: 80%;
+}
+
+.thumbnail-room{
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 10px;
+    width: 20%;
+    height: 80%;
+    background: #00438157;
+    border-radius: 0.5em;
+}
+
+.thumbnail-room .info .info-device{
+    text-align: center;
+    display: inline-block;
+    font-size: 13pt;
+    height: 100%;
+    width: 100%;
+    font-family: 'Fjalla One', sans-serif;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+

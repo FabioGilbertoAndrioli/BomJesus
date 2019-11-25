@@ -55,7 +55,6 @@ class ReserveController extends Controller
 
         $data = $request->all();
 
-        $data['car_id'] = 1;
         $create = $this->reserve->create($data);
         if($create)
             return redirect()->route('reserve.index')->with(['success'=>"Cadastrado realizado com sucesso!"]);
@@ -98,7 +97,7 @@ class ReserveController extends Controller
      */
     public function update(Request $request, Reserve $reserve)
     {
-        $request['car_id'] = 1;
+
         if($reserve->update($request->all()))
             return redirect()->route('reserve.index')->with(['success'=>"Reserva editada com sucesso"]);
         else

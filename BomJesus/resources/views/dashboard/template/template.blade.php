@@ -41,7 +41,7 @@
                          <!-- <hr>
                         <li><a href=""><i class="fa fa-envelope"></i> SOLICITAÇÕES</a></li>-->
                         <hr>
-                        <li><a href=""><i class="fa fa-university"></i> SALAS</a></li>
+                         <li><a href="{{route('room.index')}}"><i class="fa fa-university"></i> SALAS</a></li>
                         <hr>
                          <li><a href="{{route('car.index')}}"><i class="fa fa-archive"></i> CARRINHOS</a></li>
                         <hr>
