@@ -121,8 +121,12 @@
             <label for="inputCarrinho">Carrinho</label>
             <select name="car_id" id="inputCarrinho" class="form-control">
                 <optgroup label="Carrinho">
-                    <option value="Carrinho 1">Carrinho 1</option>
-                    <option value="Carrinho 2">Carrinho 2</option>
+                   @forelse ($cars as $car)
+                    <option @if(isset($reserve) && $reserve->user == $user) selected="selected"  @endif value="{{$car->id}}">{{$car->name}}</option>
+                   @empty
+                        <option>Nenhum carrinho encontrado...</option>
+                   @endforelse
+
                 </optgroup>
             </select>
             </div>

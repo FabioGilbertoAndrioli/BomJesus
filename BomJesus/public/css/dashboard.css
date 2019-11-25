@@ -8,6 +8,7 @@
 @import url('https://fonts.googleapis.com/css?family=Odibee+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Tomorrow&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Merriweather+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One&display=swap');
 
 *{
     margin: 0;
@@ -259,6 +260,66 @@ main{
     border-radius: 10em 10em 10em 10em;
 }
 
+/** CARRINHO **/
 
+.my-panel-car{
+    width: 100%;
+    padding: 10px;
+    font-family: 'Tomorrow', sans-serif;
+    height: 80%;
+}
+
+.thumbnail-car{
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 49.7%;
+    height: 80%;
+    background: #273a2857;
+    border-radius: 0.3em;
+}
+
+.thumbnail-car .title{
+    font-size: 15pt;
+    padding: 10px;
+    border-radius: 0.7em;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    background: rgba(75, 4, 4, 0.288);
+}
+
+.thumbnail-car .info .info-capacity{
+    text-align: center;
+    display: inline-block;
+    font-size: 13pt;
+    width: 100%;
+    font-family: 'Fjalla One', sans-serif;
+}
+
+.thumbnail-car .info .info-dimension{
+    text-align: center;
+    display: inline-block;
+    font-size: 13pt;
+    width: 100%;
+    font-family: 'Fjalla One', sans-serif;
+}
+
+.thumbnail-car .info .info-slot{
+    text-align: center;
+    display: inline-block;
+    font-size: 13pt;
+    width: 100%;
+    font-family: 'Fjalla One', sans-serif;
+}
+
+.table{
+    text-align: center;
+}
+
+.actions{
+    padding: 3px;
+    float: right;
+}
 
 

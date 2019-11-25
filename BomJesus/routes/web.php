@@ -35,6 +35,20 @@ Route::resource('user', 'Web\UserController');
 Route::get('user/confirmDelete/{user}', 'Web\UserController@confirmDelete')->name('user.confirm.delete');
 Route::get('user/delete/{user}', 'Web\userController@delete')->name('user.delete');
 
+/* -- Cars -- */
+Route::resource('car', 'Web\CarController');
+Route::get('car/confirmDelete/{car}', 'Web\CarController@confirmDelete')->name('car.confirm.delete');
+Route::get('car/delete/{car}', 'Web\CarController@delete')->name('car.delete');
+
+/** Devices */
+Route::resource('device', 'Web\DeviceController');
+Route::get('device/confirmDelete/{device}', 'Web\DeviceController@confirmDelete')->name('device.confirm.delete');
+Route::get('device/delete/{device}', 'Web\DeviceController@delete')->name('device.delete');
+
+/** ROOM */
+Route::resource('room', 'Web\RoomController');
+Route::get('room/confirmDelete/{room}', 'Web\RoomController@confirmDelete')->name('room.confirm.delete');
+Route::get('room/delete/{room}', 'Web\RoomController@delete')->name('room.delete');
 
 Auth::routes();
 

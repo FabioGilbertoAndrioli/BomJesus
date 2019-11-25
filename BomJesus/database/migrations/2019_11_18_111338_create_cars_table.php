@@ -18,6 +18,8 @@ class CreateCarsTable extends Migration
         Schema::create('cars', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name',200);
+            $table->integer('cpdDispositive')->nullable();
+            $table->string('measure',200)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

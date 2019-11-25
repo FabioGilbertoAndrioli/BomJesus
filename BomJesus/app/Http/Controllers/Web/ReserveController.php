@@ -6,6 +6,7 @@ use App\Models\Reserve;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\User;
+use App\Models\Car;
 
 class ReserveController extends Controller
 {
@@ -39,7 +40,8 @@ class ReserveController extends Controller
     {
         //{{$reserve->user->contains($user) ? 'checked' : '' }}
         $users = User::all();
-        return view('dashboard.agenda.create-edit',compact('users'));
+        $cars = Car::all();
+        return view('dashboard.agenda.create-edit',compact('users','cars'));
     }
 
     /**
@@ -82,7 +84,8 @@ class ReserveController extends Controller
     {
         $reserve = $this->reserve->find($reserve->id);
         $users = User::all();
-        return view('dashboard.agenda.create-edit',compact('reserve','users'));
+        $cars = Car::all();
+        return view('dashboard.agenda.create-edit',compact('reserve','users','cars'));
         //{{$reserve->user->contains($user) ? 'checked' : '' }}
     }
 

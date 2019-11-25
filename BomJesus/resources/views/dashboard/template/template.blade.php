@@ -17,7 +17,7 @@
 
         <header class="header">
             <div class="logo">
-                <h3>Aprimax-system </h3>
+                <h3>BPARPR-system </h3>
                 <p>V-1.0</p>
             </div> <!-- logo -->
             <nav class="navbar">
@@ -38,12 +38,12 @@
                         <li><a href="{{route('user.index')}}"><i class="fa fa-users"></i> USUÁRIOS</a></li>
                         <hr>
                         <li><a href="{{route('reserve.index')}}"><i class="fa fa-calendar"></i> RESERVA</a></li>
-                        <hr>
-                        <li><a href=""><i class="fa fa-envelope"></i> SOLICITAÇÕES</a></li>
+                         <!-- <hr>
+                        <li><a href=""><i class="fa fa-envelope"></i> SOLICITAÇÕES</a></li>-->
                         <hr>
                         <li><a href=""><i class="fa fa-university"></i> SALAS</a></li>
                         <hr>
-                        <li><a href=""><i class="fa fa-archive"></i> CARRINHOS</a></li>
+                         <li><a href="{{route('car.index')}}"><i class="fa fa-archive"></i> CARRINHOS</a></li>
                         <hr>
                         <li><a href=""><i class="fa fa-cubes"></i> DISPOSITIVOS</a></li>
                         <hr>

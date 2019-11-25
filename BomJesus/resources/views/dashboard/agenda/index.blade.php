@@ -37,9 +37,12 @@
                     <td>{{$reserve->user->name}}</td>
                     <td>
                         <ul>
-                            <li class="list-classes">Terceira aula</li>
-                            <li class="list-classes">Quarta aula</li>
-                            <li class="list-classes">Quinta aula</li>
+                            @forelse ($reserve->classes as $classe)
+                                <li class="list-classes">{{$classe}}</li>
+                            @empty
+                            <li class="list-classes">Nehuma aula selecionada</li>
+                            @endforelse
+
                         </ul>
                     </td>
                     <td>{{Carbon\Carbon::parse($reserve->date)->format('d/m/Y')}}</td>
