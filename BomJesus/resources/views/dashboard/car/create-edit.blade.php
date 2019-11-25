@@ -19,7 +19,7 @@
         @csrf
         <div class="form-row">
             <div class="form-group col-md-12">
-                <label for="inputNome">Nome</label>
+                <label for="inputNome">* Nome</label>
                 <input type="text" value="{{$car->name ?? ''}}" name="name" class="form-control" id="inputNome" placeholder="Nome do carrinho">
             </div>
         </div>
