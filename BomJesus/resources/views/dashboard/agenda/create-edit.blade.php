@@ -19,7 +19,7 @@
         @csrf
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputNivel">Usuário</label>
+                <label for="inputNivel">* Usuário</label>
                 <select name="user_id" class="form-control" id="inputNivel">
                     <option @if(!isset($reserve)) selected="selected" @endif >Usuário...</option>
                     <optgroup label="Usuários">
@@ -32,7 +32,7 @@
                 </select>
             </div>
             <div class="form-group col-md-6">
-                <label for="inputNivel">Nível</label>
+                <label for="inputNivel">* Nível</label>
                 <select name="level" class="form-control" id="inputNivel">
                     <option @if(!isset($reserve))  selected="selected" @endif>Nível...</option>
                     <optgroup label="NÍVEL">
@@ -44,6 +44,7 @@
             </div>
         </div>
         <div class="form-group">
+            *
                 <div class="form-check form-check-inline">
                     <input name="classes[]" @if(isset($reserve)) {{ in_array("Primeira aula",$reserve->classes) ? 'checked' : '' }} @endif class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Primeira aula">
                     <label class="form-check-label" for="inlineCheckbox1">Primeira aula</label>
@@ -66,7 +67,7 @@
                 </div>
             </div>
         <div class="form-group">
-            <label for="inputTurma">Turma</label>
+            <label for="inputTurma">* Turma</label>
             <select name="class" class="form-control" id="inputTurma">
 
                     <optgroup label="INFANTIL">
@@ -107,7 +108,7 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label for="inputNivel">Perído</label>
+                <label for="inputNivel">* Perído</label>
                 <select name="period" class="form-control" id="inputPeriodo">
                         <option  selected="selected">Período...</option>
                         <optgroup label="Período">
@@ -118,7 +119,7 @@
                 </select>
             </div>
             <div class="form-group col-md-4">
-            <label for="inputCarrinho">Carrinho</label>
+            <label for="inputCarrinho">* Carrinho</label>
             <select name="car_id" id="inputCarrinho" class="form-control">
                 <optgroup label="Carrinho">
                    @forelse ($cars as $car)
@@ -131,7 +132,7 @@
             </select>
             </div>
             <div class="form-group col-md-4">
-                <label for="inputDate">Data</label>
+                <label for="inputDate">* Data</label>
                 <input  @if(isset($reserve)) value="{{Carbon\Carbon::parse($reserve->date)->format('Y-m-d') }}" @endif name="date" type="date" class="form-control" id="inputDate">
             </div>
             @if(isset($reserve))

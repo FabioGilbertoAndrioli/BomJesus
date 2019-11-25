@@ -19,7 +19,7 @@
         @csrf
         <div class="form-row">
             <div class="form-group col-md-12">
-                <label for="inputNome">Nome do dispositivo</label>
+                <label for="inputNome">* Nome do dispositivo</label>
                 <input type="text" value="{{$device->name ?? ''}}" name="name" class="form-control" id="inputNome" placeholder="Nome do dispostivo">
             </div>
         </div>
@@ -29,7 +29,7 @@
                 <input type="text" value="{{$device->model ?? ''}}" name="model" class="form-control" id="inputModel" placeholder="Modelo do dispostivo">
             </div>
             <div class="form-group col-md-4">
-                <label for="inputBrand">Marca</label>
+                <label for="inputBrand">* Marca</label>
                 <input type="text" value="{{$device->brand ?? ''}}" name="brand" class="form-control" id="inputBrand" placeholder="Marca do dispositivo">
             </div>
             <div class="form-group col-md-4">
