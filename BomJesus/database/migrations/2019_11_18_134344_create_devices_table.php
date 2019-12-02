@@ -22,7 +22,13 @@ class CreateDevicesTable extends Migration
             $table->string('patrimony')->nullable();
             $table->string('ip')->nullable();
 
-            $table->bigInteger('room_id')->unsigned();
+            $table->bigInteger('car_id')->unsigned()->nullable();
+
+            $table->foreign('car_id')
+                  ->references('id')
+                  ->on('cars');
+
+            $table->bigInteger('room_id')->unsigned()->nullable();
 
             $table->foreign('room_id')
                   ->references('id')

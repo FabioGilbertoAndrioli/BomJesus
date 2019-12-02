@@ -24,20 +24,6 @@ class CreateCarsTable extends Migration
             $table->softDeletes();
         });
 
-
-        Schema::create('chromebooks', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('serieNumber');
-            $table->string('patrimony')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
-
-            $table->bigInteger('car_id')->unsigned();
-            $table->foreign('car_id')
-                  ->references('id')
-                  ->on('cars');
-        });
-
         Schema::create('reserves', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->json('classes',150); // aula

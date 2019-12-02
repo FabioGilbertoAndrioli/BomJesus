@@ -50,9 +50,6 @@ Route::resource('room', 'Web\RoomController');
 Route::get('room/confirmDelete/{room}', 'Web\RoomController@confirmDelete')->name('room.confirm.delete');
 Route::get('room/delete/{room}', 'Web\RoomController@delete')->name('room.delete');
 
-Route::resource('chromebook', 'Web\ChromebookController');
-Route::get('chromebook/confirmDelete/{chromebook}', 'Web\ChromebookController@confirmDelete')->name('chromebook.confirm.delete');
-Route::get('chromebook/delete/{chromebook}', 'Web\chromebookController@delete')->name('chromebook.delete');
 
 Auth::routes();
 

@@ -47,7 +47,6 @@
                         <hr>
                          <li><a href="{{route('device.index')}}"><i class="fa fa-cubes"></i> DISPOSITIVOS</a></li>
                         <hr>
-                        <li><a href=""><i class="fa fa-laptop"></i> CHROMEBOOKS</a></li>
                         <hr>
                         <li><a href=""><i class="fa fa-print"></i> TONERS</a></li>
                         <hr>
