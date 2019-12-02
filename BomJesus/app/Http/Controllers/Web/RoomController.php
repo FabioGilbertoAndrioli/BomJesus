@@ -47,6 +47,7 @@ class RoomController extends Controller
         $data = $request->all();
 
         $create = $this->room->create($data);
+        $create->location()->create();
         if($create)
             return redirect()->route('room.index')->with(['success'=>"Cadastrado realizado com sucesso!"]);
         else
@@ -85,7 +86,7 @@ class RoomController extends Controller
     public function delete(Room $room){
         $room = $this->room->find($room->id);
 
-        if($room->delete())
+        if($room->delete() && $room->location()->delete())
             return redirect()->route('room.index')->with(['success'=>"Reserva deletada com sucesso"]);
         else
             return redirect()->route("room.edit",['id' => $room->id])

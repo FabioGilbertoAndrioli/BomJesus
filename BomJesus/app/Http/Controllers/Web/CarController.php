@@ -45,8 +45,10 @@ class CarController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-
+        $car = Car::find(1);
         $create = $this->car->create($data);
+
+        $create->location()->create();
         if($create)
             return redirect()->route('car.index')->with(['success'=>"Cadastrado realizado com sucesso!"]);
         else
@@ -103,7 +105,7 @@ class CarController extends Controller
     public function delete(Car $car){
         $car = $this->car->find($car->id);
 
-        if($car->delete())
+        if($car->delete() && $car->location()->delete())
             return redirect()->route('car.index')->with(['success'=>"Reserva deletada com sucesso"]);
         else
             return redirect()->route("car.edit",['id' => $car->id])

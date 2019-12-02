@@ -5,6 +5,11 @@ use App\Models\Car;
 
 class CarsTableSeeder extends Seeder
 {
+
+    public function __construct(Car $car)
+    {
+
+    }
     /**
      * Run the database seeds.
      *

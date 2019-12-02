@@ -32,6 +32,7 @@ class CreateCarsTable extends Migration
             $table->string('period',150);
             $table->dateTime('date');
 
+
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('car_id')->unsigned();
 
