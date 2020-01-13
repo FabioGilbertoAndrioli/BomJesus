@@ -123,7 +123,7 @@
             <select name="car_id" id="inputCarrinho" class="form-control">
                 <optgroup label="Carrinho">
                    @forelse ($cars as $car)
-                    <option @if(isset($reserve) && $reserve->user == $user) selected="selected"  @endif value="{{$car->id}}">{{$car->name}}</option>
+                    <option @if(isset($reserve) && $reserve->car == $car) selected="selected"  @endif value="{{$car->id}}">{{$car->name}}</option>
                    @empty
                         <option>Nenhum carrinho encontrado...</option>
                    @endforelse

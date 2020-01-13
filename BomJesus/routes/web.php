@@ -26,6 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('reserve', 'Web\ReserveController');
 Route::get('reserve/confirmDelete/{reserve}', 'Web\ReserveController@confirmDelete')->name('reserve.confirm.delete');
 Route::get('reserve/delete/{reserve}', 'Web\ReserveController@delete')->name('reserve.delete');
+Route::post('reserve/search', 'Web\ReserveController@search')->name('reserve.search');
 
 /* --- Sala -- */
 Route::resource('room', 'Web\RoomController');

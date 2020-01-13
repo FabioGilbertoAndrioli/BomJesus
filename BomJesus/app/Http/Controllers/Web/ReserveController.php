@@ -62,6 +62,15 @@ class ReserveController extends Controller
             return redirect()->route('reserve.index')->with(['success'=>"Cadastrado realizado com sucesso!"]);
     }
 
+
+    public function search(Request $request){
+        //dd($request->search);
+        $request->search = str_replace('/', '-', $request->search);
+        $request->search = date('Y-m-d', strtotime($request->search));
+        $reserves = $this->reserve->where("date",$request->search)->orderBy('id','desc')->paginate($this->paginate);
+        return view('dashboard.agenda.index',compact('reserves'));
+    }
+
     /**
      * Display the specified resource.
      *

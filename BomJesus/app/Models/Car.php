@@ -9,6 +9,6 @@ class Car extends Model
     protected $fillable = ['name','measure','cpdDispositive'];
 
     public function location(){
-        return $this->morphOne(Location::class, 'Locationtable');
+        return $this->morphMany(Location::class, 'Locationtable');
     }
 }

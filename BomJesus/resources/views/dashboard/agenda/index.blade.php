@@ -12,10 +12,11 @@
         <a href="{{route('reserve.create')}}" class="btn btn-info"><i class="fa fa-calendar"></i> CADASTRAR</a>
     </div> <!-- register -->
     <div class="search">
-        <form>
-            <input type="text" name="search" />
-            <button type="submit">Buscar</button>
-        </form>
+    <form method="post" action="{{route('reserve.search')}}">
+        @csrf
+        <input type="text" name="search" />
+        <button type="submit">Buscar</button>
+    </form>
     </div><!-- search -->
 </div> <!-- header-reserve -->
 <div class="my-panel">

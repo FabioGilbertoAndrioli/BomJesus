@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Car;
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -22,6 +23,7 @@ class CarController extends Controller
      */
     public function index()
     {
+
         $cars = $this->car->orderBy('id','desc')->paginate($this->paginate);
         return view('dashboard.car.index',compact('cars'));
     }
