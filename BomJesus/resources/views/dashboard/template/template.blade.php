@@ -33,7 +33,7 @@
             <div class="side">
                 <nav class="sidebar">
                     <ul>
-                        <li><a href=""><i class="fa fa-home"></i> HOME</a></li>
+                    <li><a href="{{route('dashboard')}}"><i class="fa fa-home"></i> HOME</a></li>
                         <hr>
                         <li><a href="{{route('user.index')}}"><i class="fa fa-users"></i> USUÁRIOS</a></li>
                         <hr>
