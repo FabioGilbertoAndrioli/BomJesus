@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\User;
 use App\Models\Car;
+use Illuminate\Support\Facades\Date;
+
 
 class ReserveController extends Controller
 {
@@ -26,7 +28,8 @@ class ReserveController extends Controller
     {
         //  $reserve = $this->reserve->find(4);
         // dd($reserve->classes[0]);
-        $reserves = $this->reserve->orderBy('id','desc')->paginate($this->paginate);
+        $reserves = $this->reserve->orderBy('date','desc')->paginate($this->paginate);
+
         return view('dashboard.agenda.index',compact('reserves'));
 
     }

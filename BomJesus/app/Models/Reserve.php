@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use DB;
 
 class Reserve extends Model
 {
@@ -19,6 +20,11 @@ class Reserve extends Model
 
     public function car(){
         return $this->belongsTo(Car::class);
+    }
+
+    public function reserveChart(){
+        return $reserves = DB::select("SELECT DATE_FORMAT(date, '%Y %M') as 'dat',COUNT(DATE_FORMAT(date, '%M')) as qtd FROM `reserves` GROUP by dat order by date
+         ");
     }
 }
 

@@ -47,6 +47,18 @@
                     <input type="text" value="{{$device->patrimony ?? ''}}" name="patrimony" class="form-control" id="inputPatrimonio" placeholder="Numero de patrimônio">
                 </div>
             </div>
+            <div class="form-group col-md-12">
+                <label for="inputLocal">Local</label>
+                <select name="Local" class="form-control" id="inputLocal">
+                        @if(isset($user))
+                            <option value=""  selected="selected">Local...</option>
+                        @endif
+                        <optgroup label="Local">
+                            <option  @if(isset($user) && $user->local == "Masculino") selected="selected" @endif value="Masculino">Masculino</option>
+                            <option  @if(isset($user) && $user->Local == "Feminino")  selected="selected" @endif value="Feminino">Feminino</option>
+                        </optgroup>
+                </select>
+            </div>
 
             @if(isset($device))
                 <div class="form-group col-md-8">

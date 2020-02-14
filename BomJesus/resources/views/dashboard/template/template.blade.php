@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="{{ asset('/resource/icon/css/font-awesome.min.css') }}">
         <script src="{{ asset('/js/app.js') }}"></script>
         <script src="{{ asset('/js/message.js') }}"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 
         <title>Dashboard</title>
     </head>
@@ -47,7 +47,6 @@
                         <hr>
                          <li><a href="{{route('device.index')}}"><i class="fa fa-cubes"></i> DISPOSITIVOS</a></li>
                         <hr>
-                        <hr>
                         <li><a href=""><i class="fa fa-print"></i> TONERS</a></li>
                         <hr>
                     </ul>
@@ -58,5 +57,9 @@
             </div><!-- content -->
             <div class="clear"></div> <!-- clear -->
         </main>
+        @isset($chart)
+            {!! $chart->script() !!}
+            {!! $usercharts->script() !!}
+        @endisset
     </body>
 </html>

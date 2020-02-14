@@ -103,19 +103,21 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $data = $request->all();
+
         if($request->hasFile('image')){
             $image = $request->file('image');
 
             //Definir o nome da imagem
             $nameFile = uniqid(date('YmdHi')).'.'.$image->getClientOriginalExtension();
 
-            $upload = $image->storeAs('users',$user->image);
+            $upload = $image->storeAs('users',$nameFile);
             $data['image'] = $nameFile;
             if(!$upload)
-                return redirect()->route("user.edit",['id' => $user->id])
-                ->withErrors(['errors'=>'Falha no upload'])
-                ->withInput();
-        }
+                return redirect()
+                        ->route("user.create")
+                        ->withErrors(['errors'=>'Erro no upload'])
+                        ->withInput();
+         }
 
         if($user->update($data))
             return redirect()->route('user.index')->with(['success'=>"Usuário editado com sucesso"]);

@@ -356,4 +356,30 @@ main{
     overflow-x: hidden;
 }
 
+/*----------dashboard--------------*/
 
+.panel-home{
+    width: 100%;
+    height: 100%;
+}
+
+.panel-home .title{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.panel-home .modal-panel{
+    width: 100%;
+    height: 85%;
+    text-align: center;
+}
+
+.modal-panel .chart{
+
+    width: 48%;
+    height: 100%;
+    border:3px solid black;
+    border-radius: 0.8em;
+    float: left;
+
+}

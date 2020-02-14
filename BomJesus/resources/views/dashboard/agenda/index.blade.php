@@ -33,7 +33,9 @@
         </thead>
         <tbody>
             @forelse ($reserves as $reserve)
-                <tr>
+                <tr @if(Carbon\Carbon::parse($reserve->date)->format('Y-m-d') == date('Y-m-d')) style="background:#f3b5b5"
+                    @elseif(Carbon\Carbon::parse($reserve->date)->format('Y-m-d') < date('Y-m-d')) style="background:#7c9a88"
+                    @elseif(Carbon\Carbon::parse($reserve->date)->format('Y-m-d') > date('Y-m-d')) style="background:#8dabff"  @endif>
                     <th scope="row">{{$reserve->id}}</th>
                     <td>{{$reserve->user->name}}</td>
                     <td>

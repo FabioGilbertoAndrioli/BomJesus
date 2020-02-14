@@ -4,9 +4,20 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Dashboard;
 use Illuminate\Http\Request;
+use App\Charts\ReportsChart;
+use App\Charts\SampleChart;
+use App\Models\Reserve;
+use App\User;
+use DB;
+
 
 class DashboardController extends Controller
 {
+    private $reserve;
+
+    public function __construct(Reserve $reserve){
+        $this->reserve = $reserve;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +25,32 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+        date_default_timezone_set('America/Sao_Paulo');
 
-        return view('dashboard.home.index');
+         $reserves = $this->reserve->reserveChart();
+
+        $chart = new SampleChart;
+        $usercharts = new SampleChart;
+        foreach($reserves as $reserve){
+            $chart->labels[] =  strftime('%b %Y', strtotime($reserve->dat));
+            $qtd[] = $reserve->qtd;
+        }
+        $chart->dataset('Reserva mensal de chromebook', 'bar',$qtd);
+
+        $users = User::all();
+
+        foreach($users as $user){
+            $name = explode(" ",$user->name);
+            $usercharts->labels[] =  $name[0];
+            $qtdUser[] = $user->reserve->count();
+
+        }
+
+        $usercharts->dataset('Reserva por professor', 'bar',$qtdUser);
+
+
+        return view('dashboard.home.index',compact('chart','usercharts'));
     }
 
     /**
