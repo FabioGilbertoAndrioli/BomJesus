@@ -10,6 +10,7 @@ class UserController extends Controller
 {
 
     private $user;
+    private $paginate = 8;
     public function __construct(User $user){
         $this->user = $user;
     }
@@ -19,7 +20,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $users = $this->user->all();
+        $users = $this->user->paginate($this->paginate);
         return view('dashboard.user.index',compact('users'));
     }
 

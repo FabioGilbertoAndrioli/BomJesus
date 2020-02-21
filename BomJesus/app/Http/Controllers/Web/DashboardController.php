@@ -41,9 +41,11 @@ class DashboardController extends Controller
         $users = User::all();
 
         foreach($users as $user){
-            $name = explode(" ",$user->name);
-            $usercharts->labels[] =  $name[0];
-            $qtdUser[] = $user->reserve->count();
+            if($user->reserve->count() > 0){
+                $name = explode(" ",$user->name);
+                $usercharts->labels[] =  $name[0];
+                $qtdUser[] = $user->reserve->count();
+            }
 
         }
 
