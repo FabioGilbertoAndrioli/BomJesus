@@ -9,6 +9,7 @@ use App\Charts\SampleChart;
 use App\Models\Reserve;
 use App\User;
 use DB;
+use Illuminate\Support\Facades\Crypt;
 
 
 class DashboardController extends Controller
@@ -25,8 +26,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
+
+
         setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         date_default_timezone_set('America/Sao_Paulo');
+
 
          $reserves = $this->reserve->reserveChart();
 
