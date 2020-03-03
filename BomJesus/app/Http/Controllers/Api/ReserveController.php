@@ -4,9 +4,21 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Reserve;
+use Carbon\Carbon;
+use App\User;
+use App\Models\Car;
 
 class ReserveController extends Controller
 {
+
+
+    private $reserve;
+    private $paginate = 10;
+
+    public function __construct(Reserve $reserve){
+        $this->reserve = $reserve;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +26,16 @@ class ReserveController extends Controller
      */
     public function index()
     {
-        //
+        $reserves = $this->reserve->with(['user','car'])->orderBy('date','desc')->get();
+            return response()->json(['reservas' => $reserves]);
+    }
+
+
+    public function showUser($id){
+        $reserve = Reserve::find($id);
+        $user = $reserve->user;
+
+        return response()->json(['user' => $user]);
     }
 
     /**

@@ -27,10 +27,8 @@ class DashboardController extends Controller
     public function index()
     {
 
-
         setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
         date_default_timezone_set('America/Sao_Paulo');
-
 
          $reserves = $this->reserve->reserveChart();
 
@@ -40,6 +38,7 @@ class DashboardController extends Controller
             $chart->labels[] =  strftime('%b %Y', strtotime($reserve->dat));
             $qtd[] = $reserve->qtd;
         }
+
         $chart->dataset('Reserva mensal de chromebook', 'bar',$qtd);
 
         $users = User::all();
@@ -52,9 +51,7 @@ class DashboardController extends Controller
             }
 
         }
-
         $usercharts->dataset('Reserva por professor', 'bar',$qtdUser);
-
 
         return view('dashboard.home.index',compact('chart','usercharts'));
     }

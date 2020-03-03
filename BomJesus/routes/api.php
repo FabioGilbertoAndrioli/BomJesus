@@ -17,6 +17,6 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::get('/teste',function(){
-    return "ola";
-});
+Route::resource('reserves','Api\ReserveController');
+Route::resource('users','Api\UserController');
+Route::get('reserve_user/{id}','Api\ReserveController@showUser');
