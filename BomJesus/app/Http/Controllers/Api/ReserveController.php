@@ -8,7 +8,7 @@ use App\Models\Reserve;
 use Carbon\Carbon;
 use App\User;
 use App\Models\Car;
-
+use Illuminate\Support\Facades\Storage;
 class ReserveController extends Controller
 {
 
@@ -26,7 +26,9 @@ class ReserveController extends Controller
      */
     public function index()
     {
-        $reserves = $this->reserve->with(['user','car'])->orderBy('date','desc')->get();
+        // $reserves = $this->reserve->find(1);
+        // dd(url("storage/users/{}"));
+        $reserves = $this->reserve->with(['user','car'])->where('date', '>=', Carbon::today())->orderBy('date','desc')->get();
             return response()->json(['reservas' => $reserves]);
     }
 

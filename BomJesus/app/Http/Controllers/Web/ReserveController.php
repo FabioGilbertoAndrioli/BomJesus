@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use App\User;
 use App\Models\Car;
 use Illuminate\Support\Facades\Date;
+use App\Events\EventResponseReserve;
 
 
 class ReserveController extends Controller
@@ -58,10 +59,12 @@ class ReserveController extends Controller
 
         $data = $request->all();
 
-        $create = $this->reserve->create($data);
-        if($create)
+        $create = true;//$this->reserve->create($data);
+        //broadcast(new EventResponseReserve)->toOthers();
+        if($create){
+            broadcast(new EventResponseReserve)->toOthers();
             return redirect()->route('reserve.index')->with(['success'=>"Cadastrado realizado com sucesso!"]);
-        else
+        }else
             return redirect()->route('reserve.index')->with(['success'=>"Cadastrado realizado com sucesso!"]);
     }
 
@@ -127,9 +130,10 @@ class ReserveController extends Controller
     public function delete(Reserve $reserve){
         $reserve = $this->reserve->find($reserve->id);
 
-        if($reserve->delete())
+        if($reserve->delete()){
+            broadcast(new EventResponseReserve)->toOthers();
             return redirect()->route('reserve.index')->with(['success'=>"Reserva deletada com sucesso"]);
-        else
+        }else
             return redirect()->route("reserve.edit",['id' => $reserve->id])
             ->withErrors(['errors'=>'Falha ao deletar'])
             ->withInput();
