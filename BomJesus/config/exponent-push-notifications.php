@@ -11,7 +11,7 @@ return [
         'driver' => env('EXPONENT_PUSH_NOTIFICATION_INTERESTS_STORAGE_DRIVER', 'file'),
 
         'database' => [
-            'table_name' => 'colyans',
+            'table_name' => 'pushnotifications',
         ],
     ],
 ];
