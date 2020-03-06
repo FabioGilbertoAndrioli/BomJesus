@@ -12,7 +12,7 @@ use App\Models\Reserve;
 
 class NewReserve extends Notification
 {
-    use Queueable;
+    //use Queueable;
 
     private $reserve;
     /**
@@ -34,7 +34,7 @@ class NewReserve extends Notification
     public function via($notifiable)
     {
        // return ['mail'];
-      // return [ExpoChannel::class];
+      return [ExpoChannel::class];
     }
 
     /**

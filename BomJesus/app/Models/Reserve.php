@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use DB;
+use Illuminate\Notifications\Notifiable;
 
 class Reserve extends Model
 {
+    use Notifiable;
     protected $fillable = ['classes','level','class','user_id','car_id','period','date'];
 
     protected $casts = [

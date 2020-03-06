@@ -9,6 +9,7 @@ use App\User;
 use App\Models\Car;
 use Illuminate\Support\Facades\Date;
 use App\Events\EventResponseReserve;
+use App\Notifications\NewReserve;
 
 
 class ReserveController extends Controller
@@ -58,10 +59,11 @@ class ReserveController extends Controller
     {
 
         $data = $request->all();
-
+        $reserve = Reserve::find(21);
         $create = true;//$this->reserve->create($data);
         //broadcast(new EventResponseReserve)->toOthers();
         if($create){
+            $reserve->notify(new NewReserve($reserve));
             broadcast(new EventResponseReserve)->toOthers();
             return redirect()->route('reserve.index')->with(['success'=>"Cadastrado realizado com sucesso!"]);
         }else
