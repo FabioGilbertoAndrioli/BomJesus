@@ -66,8 +66,8 @@ class NewReserve extends Notification
 
     public function toExpoPush($notifiable)
     {
-        $title = 'Some title';
-        $description = "Some description with ";
+        $title = 'Reservas';
+        $description = "Uma nova reserva foi registrada.";
         return ExpoMessage::create()
             ->enableSound()
             ->title($title)
