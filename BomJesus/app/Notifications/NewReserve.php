@@ -12,7 +12,7 @@ use App\Models\Reserve;
 
 class NewReserve extends Notification
 {
-    //use Queueable;
+    use Queueable;
 
     private $reserve;
     /**
@@ -66,10 +66,13 @@ class NewReserve extends Notification
 
     public function toExpoPush($notifiable)
     {
+        $title = 'Some title';
+        $description = "Some description with ";
         return ExpoMessage::create()
-            ->badge(1)
             ->enableSound()
-            ->title("Congratulations!")
-            ->body("Your {$notifiable->service} account was approved!");
+            ->title($title)
+            ->body( $description)
+            ->setChannelId("new_reserve")
+            ->setJsonData(['name' => $title, 'description' => $description]);
     }
 }

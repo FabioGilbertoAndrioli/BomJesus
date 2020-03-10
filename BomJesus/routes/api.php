@@ -21,3 +21,12 @@ Route::resource('reserves','Api\ReserveController');
 Route::resource('users','Api\UserController');
 Route::get('reserve_user/{id}','Api\ReserveController@showUser');
 
+Route::post('subscribe', [
+    'as'    =>  'register-interest',
+    'uses'  =>  'Web\ReserveController@subscribe',
+]);
+
+Route::post('unsubscribe', [
+    'as'    =>  'remove-interest',
+    'uses'  =>  'Web\ReserveControlle@unsubscribe',
+]);

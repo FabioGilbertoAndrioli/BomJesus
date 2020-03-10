@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "74ce0cba7c6aa37ae4bb788aef6d3b2b",
+    "content-hash": "2c213baea998dfd80683bb87ff615fee",
     "packages": [
         {
             "name": "alymosul/exponent-server-sdk-php",
@@ -1318,16 +1318,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.64",
+            "version": "1.0.65",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0"
+                "reference": "8f17b3ba67097aafb8318cd5c553b1acf7c891c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/d13c43dbd4b791f815215959105a008515d1a2e0",
-                "reference": "d13c43dbd4b791f815215959105a008515d1a2e0",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/8f17b3ba67097aafb8318cd5c553b1acf7c891c8",
+                "reference": "8f17b3ba67097aafb8318cd5c553b1acf7c891c8",
                 "shasum": ""
             },
             "require": {
@@ -1398,7 +1398,55 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2020-02-05T18:14:17+00:00"
+            "time": "2020-03-08T18:53:20+00:00"
+        },
+        {
+            "name": "mcaskill/composer-exclude-files",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mcaskill/composer-plugin-exclude-files.git",
+                "reference": "81fdd0def4d3aa9c26715f1108706ae92ab0a98c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mcaskill/composer-plugin-exclude-files/zipball/81fdd0def4d3aa9c26715f1108706ae92ab0a98c",
+                "reference": "81fdd0def4d3aa9c26715f1108706ae92ab0a98c",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.0",
+                "php-coveralls/php-coveralls": "^2.0",
+                "phpunit/phpunit": "^5.7 || ^6.5",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "class": "McAskill\\Composer\\ExcludeFilePlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "McAskill\\Composer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chauncey McAskill",
+                    "email": "chauncey@mcaskill.ca"
+                }
+            ],
+            "description": "Exclude files from autoload_files.php",
+            "time": "2018-12-18T18:58:13+00:00"
         },
         {
             "name": "monolog/monolog",

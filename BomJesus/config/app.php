@@ -175,7 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         ConsoleTVs\Charts\ChartsServiceProvider::class,
-
+        NotificationChannels\ExpoPushNotifications\ExpoPushNotificationsServiceProvider::class,
     ],
 
     /*

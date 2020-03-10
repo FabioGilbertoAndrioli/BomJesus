@@ -10,6 +10,12 @@ use App\Models\Car;
 use Illuminate\Support\Facades\Date;
 use App\Events\EventResponseReserve;
 use App\Notifications\NewReserve;
+use NotificationChannels\ExpoPushNotifications\ExpoChannel;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Notification;
+use NotificationChannels\ExpoPushNotifications\Http\ExpoController;
+
 
 
 class ReserveController extends Controller
@@ -17,9 +23,11 @@ class ReserveController extends Controller
 
     private $reserve;
     private $paginate = 10;
+    private $expoChannel;
 
-    public function __construct(Reserve $reserve){
+    public function __construct(Reserve $reserve, ExpoChannel $expoChannel){
         $this->reserve = $reserve;
+        $this->expoChannel = $expoChannel;
     }
     /**
      * Display a listing of the resource.
@@ -60,10 +68,12 @@ class ReserveController extends Controller
 
         $data = $request->all();
         $reserve = Reserve::find(21);
+        $user = User::find(1);
         $create = true;//$this->reserve->create($data);
         //broadcast(new EventResponseReserve)->toOthers();
         if($create){
-            $reserve->notify(new NewReserve($reserve));
+            //$reserve->notify($user,new NewReserve($reserve));
+            Notification::send($user, new NewReserve($reserve) );
             broadcast(new EventResponseReserve)->toOthers();
             return redirect()->route('reserve.index')->with(['success'=>"Cadastrado realizado com sucesso!"]);
         }else
@@ -150,5 +160,81 @@ class ReserveController extends Controller
     public function destroy(Reserve $reserve)
     {
         //
+    }
+
+    public function subscribe(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'expo_token'    =>  'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return JsonResponse::create([
+                'status' => 'failed',
+                'error' => [
+                    'message' => 'Expo Token is required',
+                ],
+            ], 422);
+        }
+
+        $token = $request->get('expo_token');
+        $user = User::find(1);
+        $interest = $this->expoChannel->interestName($user);
+
+        try {
+            $this->expoChannel->expo->subscribe($interest, $token);
+        } catch (\Exception $e) {
+            return JsonResponse::create([
+                'status'    => 'failed',
+                'error'     =>  [
+                    'message' => $e->getMessage(),
+                ],
+            ], 500);
+        }
+
+        return JsonResponse::create([
+            'status'    =>  'succeeded',
+            'expo_token' => $token,
+        ], 200);
+    }
+
+    /**
+     * Handles removing subscription endpoint for the authenticated interest.
+     *
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function unsubscribe(Request $request)
+    {
+        $interest = $this->expoChannel->interestName("test");
+
+        $validator = Validator::make($request->all(), [
+            'expo_token'    =>  'sometimes|string',
+        ]);
+
+        if ($validator->fails()) {
+            return JsonResponse::create([
+                'status' => 'failed',
+                'error' => [
+                    'message' => 'Expo Token is invalid',
+                ],
+            ], 422);
+        }
+
+        $token = $request->get('expo_token') ?: null;
+
+        try {
+            $deleted = $this->expoChannel->expo->unsubscribe($interest, $token);
+        } catch (\Exception $e) {
+            return JsonResponse::create([
+                'status'    => 'failed',
+                'error'     =>  [
+                    'message' => $e->getMessage(),
+                ],
+            ], 500);
+        }
+
+        return JsonResponse::create(['deleted' => $deleted]);
     }
 }
