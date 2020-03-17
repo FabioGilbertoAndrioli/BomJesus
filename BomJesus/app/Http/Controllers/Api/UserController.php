@@ -47,9 +47,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::find($id);
-
-        return response()->json(['user' => $user->name]);
+        $user = User::find(1);
+        $reserves = $user->reserve;
+        dd($user);
+        return response()->json(['reserves' => $reserves]);
     }
 
     /**

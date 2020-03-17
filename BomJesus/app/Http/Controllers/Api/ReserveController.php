@@ -34,9 +34,9 @@ class ReserveController extends Controller
 
 
     public function showUser($id){
-        $reserve = Reserve::find($id);
-        $user = $reserve->user;
-
+        $user = User::find(1)->with('reserve')->first();
+        $reserves = $user->reserve;
+        dd($user);
         return response()->json(['user' => $user]);
     }
 
@@ -69,7 +69,7 @@ class ReserveController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

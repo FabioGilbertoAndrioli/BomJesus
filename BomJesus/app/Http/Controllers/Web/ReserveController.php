@@ -69,7 +69,7 @@ class ReserveController extends Controller
         $data = $request->all();
         $reserve = Reserve::find(21);
         $user = User::find(1);
-        $create = true;//$this->reserve->create($data);
+        $create = $this->reserve->create($data);
         //broadcast(new EventResponseReserve)->toOthers();
         if($create){
             //$reserve->notify($user,new NewReserve($reserve));

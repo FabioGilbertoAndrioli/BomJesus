@@ -17,9 +17,15 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::resource('reserves','Api\ReserveController');
-Route::resource('users','Api\UserController');
-Route::get('reserve_user/{id}','Api\ReserveController@showUser');
+
+
+
+
+Route::group(['prefix' => 'dashboard'], function () {
+    Route::resource('reserves','Api\ReserveController');
+    Route::resource('users','Api\UserController');
+    Route::get('reserve_user/{id}','Api\ReserveController@showUser');
+});
 
 Route::post('subscribe', [
     'as'    =>  'register-interest',
